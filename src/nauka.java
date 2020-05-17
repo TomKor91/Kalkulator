@@ -6,25 +6,28 @@ public class nauka {
     static Scanner user = new Scanner(System.in);
 
     public static void main(String[] args) {
-
-        opis();
-        kalkulator();
+        System.out.println("KALKULATOR by Tomas K !!!");
+        while (true) {
+            description();
+            calculator();
+            menu();
+        }
     }
 
-    static void opis() {
-        System.out.println("KALKULATOR by Tomas K !!!");
+    public static void description() {
         System.out.println("Wybierz znak działania\n ");
         System.out.println("dodawanie?   wybierz '+' ");
         System.out.println("odejmowanie? wybierz '-' ");
         System.out.println("mnożenie?    wybierz '*' ");
         System.out.println("dzielenie?   wybierz '/' ");
         System.out.println("potęgowanie? wybierz '^' ");
+        System.out.println("pierwiastek? wybierz '%' ");
     }
 
-    public static void kalkulator() {
+    public static void calculator() {
 
         char znak = user.next().charAt(0);
-        if (znak != '+' && znak != '-' && znak != '*' && znak != '/' && znak != '^') {
+        if (znak != '+' && znak != '-' && znak != '*' && znak != '/' && znak != '^' && znak != '%') {
             System.out.println("Błędny znak działania ");
         }
 
@@ -40,6 +43,7 @@ public class nauka {
                 } catch (InputMismatchException a) {
                     System.out.println("Podałeś zły znak ");
                 }
+                user.nextLine();
             }
             case '-' -> {
                 try {
@@ -51,6 +55,7 @@ public class nauka {
                 } catch (InputMismatchException b) {
                     System.out.println("Podałeś zły znak");
                 }
+                user.nextLine();
             }
             case '*' -> {
                 try {
@@ -62,6 +67,7 @@ public class nauka {
                 } catch (InputMismatchException c) {
                     System.out.println("Podałeś zły znak ");
                 }
+                user.nextLine();
             }
             case '/' -> {
                 try {
@@ -72,10 +78,11 @@ public class nauka {
                     if (liczba8 > 0) {
                         System.out.println("Wynik dzielenia to: " + (liczba7 / liczba8));
                     } else
-                        System.out.println("Nie dzielimy przez zero - ZACZNIJ OD NOWA");
-                } catch (InputMismatchException e) {
+                        System.out.println("Nie dzielimy przez zero");
+                } catch (InputMismatchException d) {
                     System.out.println("Podałeś zły znak");
                 }
+                user.nextLine();
             }
             case '^' -> {
                 try {
@@ -88,19 +95,43 @@ public class nauka {
                 } catch (InputMismatchException e) {
                     System.out.println("Błąd ( w potęgowaniu nie uzywamy znaków i liczb zmiennoprzecinkowych ");
                 }
+                user.nextLine();
+            }
+            case '%' -> {
+                try {
+                    System.out.println("Podaj liczbe");
+                    double liczba11 = user.nextInt();
+                    double pierwiastek = Math.sqrt(liczba11);
+                    System.out.println("Wynik pierwiastkowania to: " + pierwiastek);
+                } catch (InputMismatchException f) {
+                    System.out.println("Podałeś zły znak dla pierwiastkowania");
+                }
+                user.nextLine();
             }
         }
 
     }
+
+    public static void menu() {
+        System.out.println("\nChcesz wykonać jeszcze jakies działanie?\nTak? wybierz - 1.\nNie? wybierz - 2. ");
+        try {
+            while (true) {
+                byte wybor = user.nextByte();
+                if (wybor == 1) {
+                    break;
+                }
+                if (wybor == 2) {
+                    System.out.println("Dowidzenia");
+                    System.exit(0);
+                } else {
+                    System.out.println("wybierz 1 lub 2");
+                }
+            }
+        } catch (InputMismatchException g) {
+            System.out.println("Podałeś zły znak Dowidzenia\n ");
+            System.exit(0);
+        }
+    }
 }
-
-
-
-
-
-
-
-
-
 
 
