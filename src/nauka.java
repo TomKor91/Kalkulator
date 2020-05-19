@@ -25,39 +25,42 @@ public class nauka {
     }
 
     public static void calculator() {
+        String znak = user.next();
+        if (znak.equals("+") || znak.equals("-") || znak.equals("*") || znak.equals("/") || znak.equals("^") || znak.equals("%")) {
 
-        char znak = user.next().charAt(0);
-        if (znak != '+' && znak != '-' && znak != '*' && znak != '/' && znak != '^' && znak != '%') {
-            System.out.println("Błędny znak działania ");
-        }
+        }else {
+        System.out.println("Podałeś zły znak");
+    }
 
         switch (znak) {
-            case '+' -> {
+            case "+": {
                 try {
-
                     System.out.println("Podaj liczbe");
                     double liczba1 = user.nextDouble();
                     System.out.println("Podaj druga liczbe ");
                     double liczba2 = user.nextDouble();
                     System.out.println("Wynik dodawania to: " + (liczba1 + liczba2));
+                    break;
                 } catch (InputMismatchException a) {
-                    System.out.println("Podałeś zły znak ");
+                    System.out.println("(+)Podałeś zły znak ");
                 }
                 user.nextLine();
+                break;
             }
-            case '-' -> {
+            case "-": {
                 try {
-                    System.out.println("Podaj liczbe");
+                    System.out.println("(-)Podaj liczbe");
                     double liczba3 = user.nextDouble();
                     System.out.println("Podaj druga liczbe ");
                     double liczba4 = user.nextDouble();
                     System.out.println("Wynik odejmowania to: " + (liczba3 - liczba4));
                 } catch (InputMismatchException b) {
-                    System.out.println("Podałeś zły znak");
+                    System.out.println("(-)Podałeś zły znak");
                 }
                 user.nextLine();
+                break;
             }
-            case '*' -> {
+            case "*": {
                 try {
                     System.out.println("Podaj liczbe");
                     double liczba5 = user.nextDouble();
@@ -65,11 +68,12 @@ public class nauka {
                     double liczba6 = user.nextDouble();
                     System.out.println("Wynik mnożenia to: " + (liczba5 * liczba6));
                 } catch (InputMismatchException c) {
-                    System.out.println("Podałeś zły znak ");
+                    System.out.println("(*)Podałeś zły znak ");
                 }
                 user.nextLine();
+                break;
             }
-            case '/' -> {
+            case "/": {
                 try {
                     System.out.println("Podaj liczbe");
                     double liczba7 = user.nextDouble();
@@ -77,14 +81,19 @@ public class nauka {
                     double liczba8 = user.nextDouble();
                     if (liczba8 > 0) {
                         System.out.println("Wynik dzielenia to: " + (liczba7 / liczba8));
-                    } else
+                    }
+                    if (liczba8 == 0 ){
                         System.out.println("Nie dzielimy przez zero");
+                    } else{
+                        System.out.println("Nie dzielimy przez liczby ujemne");
+                    }
                 } catch (InputMismatchException d) {
-                    System.out.println("Podałeś zły znak");
+                    System.out.println("(/)Podałeś zły znak");
                 }
                 user.nextLine();
+                break;
             }
-            case '^' -> {
+            case "^": {
                 try {
                     System.out.println("Podaj liczbe");
                     int liczba9 = user.nextInt();
@@ -93,11 +102,12 @@ public class nauka {
                     int potega = (int) Math.pow(liczba9, liczba10);
                     System.out.println("Wynik potęgowania to: " + (potega));
                 } catch (InputMismatchException e) {
-                    System.out.println("Błąd ( w potęgowaniu nie uzywamy znaków i liczb zmiennoprzecinkowych ");
+                    System.out.println("(^)Podałeś zły znak ");
                 }
                 user.nextLine();
+                break;
             }
-            case '%' -> {
+            case "%": {
                 try {
                     System.out.println("Podaj liczbe");
                     double liczba11 = user.nextInt();
@@ -107,6 +117,7 @@ public class nauka {
                     System.out.println("Podałeś zły znak dla pierwiastkowania");
                 }
                 user.nextLine();
+                break;
             }
         }
 
